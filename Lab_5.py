@@ -7,7 +7,7 @@
 
 import time
 import matplotlib.pyplot as mpl
-from functools import cache
+
 while True:
     n = int(input("Введите натуральное число n >= 0: "))
     if n >= 0:
@@ -26,7 +26,6 @@ def F_iter(n): #Итерационное решение
             F[i] = 5 * F[i - 1] * F[i - 3] #n нечетное
     return F[n]
 
-@cache
 def F_rec(n): #Рекурсивное решение
     if n < 2:
         return 1
