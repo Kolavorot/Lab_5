@@ -8,10 +8,6 @@
 import time
 import matplotlib.pyplot as mpl
 
-import sys
-
-sys.set_int_max_str_digits(1000000)
-
 while True:
     n = int(input("Введите натуральное число n >= 0: "))
     if n >= 0:
