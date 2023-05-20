@@ -8,6 +8,10 @@
 import time
 import matplotlib.pyplot as mpl
 
+import sys
+
+sys.set_int_max_str_digits(1000000)
+
 while True:
     n = int(input("Введите натуральное число n >= 0: "))
     if n >= 0:
@@ -15,16 +19,23 @@ while True:
     else:
         print("Введено неверное число!")
 
-def F_iter(n): #Итерационное решение
-    F = [0 for i in range(n + 2)]
-    F[0] = 1
-    F[1] = 1
-    for i in range(2, n+1):
-        if n % 2 == 0:
-            F[i] = 2 * F[i - 1] + F[i- 3]  #n четное
+def F_iter(n):
+    if n < 2:
+        return 1
+    f_2 = 1
+    f_1 = 1
+    f_0 = 1
+    f_n = None
+    for i in range(2, n + 1):
+        if i % 2 == 0:
+            f_n = 2 * f_0 + f_2
         else:
-            F[i] = 5 * F[i - 1] * F[i - 3] #n нечетное
-    return F[n]
+            f_n = 5 * f_0 * f_2
+        f_2 = f_1
+        f_1 = f_0
+        f_0 = f_n
+    return f_n
+
 
 def F_rec(n): #Рекурсивное решение
     if n < 2:
